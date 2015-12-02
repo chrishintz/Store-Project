@@ -2,4 +2,20 @@
   <%= image_tag"logo_pic.jpg" %>
 </div>
 
-<h1>Hello World</h1>
+<% if @current_user %>
+  <small class="text-success">Hello, <%= @current_user.username %></small>
+  <%= link_to "Sign out", "/sign-out", class: "btn btn-danger btn-xs" %>
+  <% else %>
+    <!-- <%= link_to "Login", "#" %> -->
+    <%= form_tag "/sign-in", class:"pull-right" do %>
+       Username
+       <%= text_field_tag :username %>
+       Password
+       <%= password_field_tag :password %>
+
+       <%= submit_tag "Sign in" %>
+    <% end %>
+<% end %>
+
+
+<h1>Dorienn's Store</h1>
