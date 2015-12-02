@@ -2,3 +2,10 @@ ul {
   padding-left: 0;
   list-style: none;
 }
+
+.navbar {
+  background-color: #222;
+  color: #9d9d9d;
+  height: 120px;
+  padding: 10px;
+}
