@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "/",        to: "products#index" as: :home
+  get "/",        to: "products#index", as: :home
   post "/users",  to: "users#create"
 
   # The priority is based upon order of creation: first created -> highest priority.
