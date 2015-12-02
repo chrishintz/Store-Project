@@ -1,21 +1,24 @@
-<div class="img-thumbnail">
-  <%= image_tag"logo_pic.jpg" %>
-</div>
+<div class="row">
+  <div class="img-circle col-lg-1">
+    <a href="/"> <%= image_tag"logo_pic.jpg"%></a>
+  </div>
 
-<% if @current_user %>
-  <small class="text-success">Hello, <%= @current_user.username %></small>
-  <%= link_to "Sign out", "/sign-out", class: "btn btn-danger btn-xs" %>
-  <% else %>
-    <!-- <%= link_to "Login", "#" %> -->
-    <%= form_tag "/sign-in", class:"pull-right" do %>
-       Username
-       <%= text_field_tag :username %>
-       Password
-       <%= password_field_tag :password %>
+  <h1 class="col-lg-4">Dorienn's Store</h1>
 
-       <%= submit_tag "Sign in" %>
+  <div class="col-lg-7">
+    <% if @current_user %>
+      <small class="text-success">Hello, <%= @current_user.username %></small>
+      <%= link_to "Sign out", "/sign-out", class: "btn btn-danger btn-xs" %>
+      <% else %>
+        <!-- <%= link_to "Login", "#" %> -->
+        <%= form_tag "/sign-in", class:"pull-right" do %>
+           Username
+           <%= text_field_tag :username %>
+           Password
+           <%= password_field_tag :password %>
+           <%= submit_tag "Sign in" %>
+        <% end %>
     <% end %>
-<% end %>
-
-
-<h1>Dorienn's Store</h1>
+    <%= link_to "Sign-up", "#" %>
+  </div>
+</div>
