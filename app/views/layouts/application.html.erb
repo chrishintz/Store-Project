@@ -19,12 +19,12 @@
 
     <div class="col-lg-7">
       <% if @current_user %>
-        <small class="text-success">Hello, <%= @current_user.username %></small>
+        <small class="text-success">Hello, <%= @current_user.email %></small>
         <%= link_to "Sign out", "/sign-out", class: "btn btn-danger btn-xs" %>
         <% else %>
           <%= form_tag "/sign-in", class:"pull-right" do %>
-             Username
-             <%= text_field_tag :username %>
+             Email Address
+             <%= text_field_tag :email %>
              Password
              <%= password_field_tag :password %>
              <%= submit_tag "Sign in" %>
