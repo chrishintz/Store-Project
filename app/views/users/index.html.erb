@@ -1,8 +1,19 @@
 <div class="col-lg-6 col-lg-offset-3">
   <h2>Sign Up</h2>
+
   <form action="/users" method="POST" class="well">
     <% form_authenticity_token %>
     <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>" />
+
+    <% if @user %>
+      <% @user.errors.each do |c, msg| %>
+        <ul>
+          <li>
+            <%= c %> <%= msg %>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
 
     <div>
       <h4>Email Address</h4>
