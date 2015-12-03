@@ -20,7 +20,8 @@
     <div class="col-lg-7">
       <% if @current_user %>
         <small class="text-success">Hello, <%= @current_user.email %></small>
-        <%= link_to "Sign out", "/sign-out", class: "btn btn-danger btn-xs" %>
+        <%= link_to "Sign Out", "/sign-out", class: "btn btn-danger btn-xs" %>
+        <%= link_to "My Account", "/my-account" %>
         <% else %>
           <%= form_tag "/sign-in", class:"pull-right" do %>
              Email Address
@@ -28,9 +29,10 @@
              Password
              <%= password_field_tag :password %>
              <%= submit_tag "Sign in" %>
+             <%= link_to "Not yet a member? Join Here!", sign_up_path %>
           <% end %>
       <% end %>
-      <%= link_to "Join!", sign_up_path %>
+      <%= link_to "Cart (0)", cart_path %>
     </div>
   </div>
 </div>
