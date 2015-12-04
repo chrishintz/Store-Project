@@ -1,0 +1,7 @@
+<%= link_to "Add Product", "/admin/products/new", class: "btn btn-danger btn-md" %>
+
+<% @products.each do |p| %>
+  <p><%= image_tag"#{p.image_url}" %>
+  <%= p.name %>
+  <%= p.description %></p>
+<% end %>

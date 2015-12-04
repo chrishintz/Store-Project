@@ -1,0 +1,33 @@
+<div class="col-lg-6 col-lg-offset-3">
+  <h2>Add A Product</h2>
+
+  <form action="/admin/products" method="POST" class="well">
+    <% form_authenticity_token %>
+    <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>" />
+
+    <% if @product %>
+      <% @product.errors.each do |c, msg| %>
+        <ul>
+          <li>
+            <%= c %> <%= msg %>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
+
+    <div>
+      <h4>Product Name</h4>
+      <input type='text' name="product[name]" class="form-control"/>
+    </div>
+    <div>
+      <h4>Description</h4>
+      <input type="text" name="product[description]" class="form-control">
+    </div>
+    <div>
+      <h4>Image URL</h4>
+      <input type="text" name="product[image_url]" class="form-control">
+    </div>
+
+    <input type='submit' />
+  </form>
+</div>
