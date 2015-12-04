@@ -2,8 +2,7 @@
   <h2>Add A Product</h2>
 
   <form action="/admin/products" method="POST" class="well">
-    <% form_authenticity_token %>
-    <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>" />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
 
     <% if @product %>
       <% @product.errors.each do |c, msg| %>

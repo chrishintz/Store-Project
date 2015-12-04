@@ -1,7 +1,27 @@
-<%= link_to "Add Product", "/admin/products/new", class: "btn btn-danger btn-md" %>
+<header class="jumbotron hero-spacer text-center">
+  <h1>Dori-Mart's Products</h1>
+  <p><%= link_to "Add Product", "/admin/products/new", class: "btn btn-danger btn-md" %></p>
+</header>
+
+
 
 <% @products.each do |p| %>
-  <p><%= image_tag"#{p.image_url}" %>
-  <%= p.name %>
-  <%= p.description %></p>
+  <div class="col-md-3 sol-sm-6 hero feature">
+    <div class="thumbnail">
+      <%= image_tag"#{p.image_url}" %>
+      <div class="caption">
+        <h3><%= p.name %></h3>
+        <p><%= p.description %></p>
+        <p><a href="#" class="btn btn-primary">Buy Now!</a>
+        <a href="#" class="btn btn-default">More Info</a></p>
+        <p>
+          <form action="/<%= p.id %>" method="POST" class="formbutton">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+          <input type="hidden" name="_method" value="DELETE">
+          <input class="button-primary delete" type="submit" value="Delete entry">
+          </form>
+        </p>
+      </div>
+    </div>
+  </div>
 <% end %>
