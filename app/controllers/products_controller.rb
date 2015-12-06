@@ -33,14 +33,11 @@ class ProductsController < ApplicationController
 
   def update
     @product                = Product.find(params[:id])
-    @product.name           = params[:name]
-    @product.description    = params[:description]
-    @product.image_url      = params[:image_url]
-    if @product.save
-      redirect_to products_path
-    else
-      render update
-    end
+    @product.name           = params[:product][:name]
+    @product.description    = params[:product][:description]
+    @product.image_url      = params[:product][:image_url]
+    @product.save
+    redirect_to products_path
   end
 
   private
