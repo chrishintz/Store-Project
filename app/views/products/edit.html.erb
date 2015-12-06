@@ -1,0 +1,28 @@
+<div class="col-lg-6 col-lg-offset-3">
+  <h2>Update Product Information</h2>
+
+  <%= form_tag "/admin/products/edit/#{@product.id}", method: "PATCH", class: "well" do %>
+    <div>
+      <h4>Product Name</h4>
+      <%= text_field_tag "product[name]", @product.name, class: "form-control" %>
+    </div>
+    <div>
+      <h4>Product Description</h4>
+      <%= text_field_tag "product[description]", @product.description, class: "form-control" %>
+    </div>
+    <div>
+      <h4>Image URL</h4>
+      <%= text_field_tag "product[image_url]", @product.image_url, class: "form-control" %>
+    </div>
+    <%= submit_tag "Update" %>
+  <% end %>
+
+    <!-- <% if @product %>
+      <% @product.errors.each do |c, msg| %>
+        <ul>
+          <li>
+            <%= c %> <%= msg %>
+          </li>
+        </ul>
+      <% end %>
+    <% end %> -->
