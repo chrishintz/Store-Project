@@ -9,6 +9,10 @@ class ProductsController < ApplicationController
     @products           = Product.all
   end
 
+  def show_customer
+    @product      = Product.find(params[:id])
+  end
+
   def create
     @product = Product.new(params.require(:product).permit(:name, :description, :image_url))
     if @product.save
@@ -25,7 +29,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product                = Product.find(params[:id])
+    @product                          = Product.find(params[:id])
+    @product_option                   = @product.product_options.new
+    # @product_options.name              = @product.product_options.name
+    # @product_options.price_in_cents    = @product.product_options.price_in_cents
+    # @product_options.product_id        = @product.id
   end
 
   def update

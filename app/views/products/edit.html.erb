@@ -17,12 +17,21 @@
     <%= submit_tag "Update" %>
   <% end %>
 
-    <!-- <% if @product %>
-      <% @product.errors.each do |c, msg| %>
-        <ul>
-          <li>
-            <%= c %> <%= msg %>
-          </li>
-        </ul>
-      <% end %>
-    <% end %> -->
+  <!-- <a href="/admin/product_options/<%= @product.id%>" class="btn btn-primary">Add Product Options</a> -->
+<div class="col-lg-6 col-lg-offset-3">
+  <h2>Add Product Options</h2>
+  <%= form_tag "/admin/product_options/#{@product.id}", method: "POST", class: "well" do %>
+    <div>
+      <h4>Product Option</h4>
+      <%= text_field_tag "product_option[name]", @product_option.name, class: "form-control" %>
+    </div>
+    <div>
+      <h4>Price In Cents</h4>
+      <%= text_field_tag "product_option[price_in_cents]", @product_option.price_in_cents, class: "form-control" %>
+    </div>
+    <div>
+      <%= hidden_field_tag "product_option[product_id]", @product.id %>
+    </div>
+    <%= submit_tag "Add Product Option" %>
+  <% end %>
+</div>

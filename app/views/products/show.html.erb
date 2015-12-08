@@ -14,7 +14,6 @@
         <p><%= p.description %></p>
         <p>
           <a href="#" class="btn btn-primary">Buy Now!</a>
-          <a href="#" class="btn btn-default">More Info</a>
           <a href="/admin/products/edit/<%=p.id%>" class="btn btn-success">Edit</a>
           <form action="/<%= p.id %>" method="POST" class="formbutton">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
