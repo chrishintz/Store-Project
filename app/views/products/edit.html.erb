@@ -8,17 +8,43 @@
     </div>
     <div>
       <h4>Product Description</h4>
-      <%= text_field_tag "product[description]", @product.description, class: "form-control" %>
+      <%= text_area_tag "product[description]", @product.description, class: "form-control" %>
     </div>
     <div>
       <h4>Image URL</h4>
-      <%= text_field_tag "product[image_url]", @product.image_url, class: "form-control" %>
+      <%= text_area_tag "product[image_url]", @product.image_url, class: "form-control" %>
     </div>
     <%= submit_tag "Update" %>
   <% end %>
 
-  <!-- <a href="/admin/product_options/<%= @product.id%>" class="btn btn-primary">Add Product Options</a> -->
-<div class="col-lg-6 col-lg-offset-3">
+  <div id="product-options">
+    <h3>Product Options</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Product Option</th>
+            <th>Price</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @product_options.each do |option| %>
+            <tr>
+              <td><%= option.name %></td>
+              <td><%= number_to_currency((option.price_in_cents)/100.0) %></td>
+              <td><form action="/admin/product_options/<%= option.id %>" method="POST" class="formbutton">
+                <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>" >
+                <input type="hidden" name="_method" value="DELETE">
+                <input class="btn btn-danger" type="submit" value="Delete entry">
+                </form>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+
+
   <h2>Add Product Options</h2>
   <%= form_tag "/admin/product_options/#{@product.id}", method: "POST", class: "well" do %>
     <div>

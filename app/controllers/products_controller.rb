@@ -31,9 +31,7 @@ class ProductsController < ApplicationController
   def edit
     @product                          = Product.find(params[:id])
     @product_option                   = @product.product_options.new
-    # @product_options.name              = @product.product_options.name
-    # @product_options.price_in_cents    = @product.product_options.price_in_cents
-    # @product_options.product_id        = @product.id
+    @product_options                  = @product.product_options.all
   end
 
   def update

@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   get "/admin/products/new",            to: "products#new"
   post "/admin/products",               to: "products#create"
   delete "/:id",                        to: "products#delete"
-  get "/admin/products/edit/:id",       to: "products#edit"
+  get "/admin/products/edit/:id",       to: "products#edit",         as: :product_options
   patch "/admin/products/edit/:id",     to: "products#update"
   get "/products/:id",                  to: "products#show_customer"
-  post "/admin/product_options/:id",    to: "product_options#create",   as: :product_options
+  post "/admin/product_options/:id",    to: "product_options#create"
+  delete "/admin/product_options/:id",  to: "product_options#delete"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
