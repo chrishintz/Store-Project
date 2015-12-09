@@ -1,19 +1,26 @@
 Rails.application.routes.draw do
 
-  get "/",                              to: "products#index",        as: :home
-  get "/sign-up",                       to: "users#index",           as: :sign_up
+  get "/sign-up",                       to: "users#index",            as: :sign_up
   post "/users",                        to: "users#create"
-  get "/sign-out",                      to: "sessions#sign_out",     as: :sign_out
-  post "/sign-in",                      to: "sessions#sign_in",      as: :sign_in
-  get "/cart",                          to: "orders#show",           as: :cart
   get "/my-account",                    to: "users#show"
-  get "/admin/products",                to: "products#show",         as: :products
+
+  get "/sign-out",                      to: "sessions#sign_out",      as: :sign_out
+  post "/sign-in",                      to: "sessions#sign_in",       as: :sign_in
+
+  get "/cart",                          to: "orders#cart",            as: :cart
+  get "/checkout",                      to: "orders#checkout",        as: :checkout
+  post "/order",                        to: "orders#finish_checkout", as: :finish_checkout
+  get "/order/confirmation",            to: "orders#confirm",         as: :order_confirm
+
+  get "/",                              to: "products#index",         as: :home
+  get "/admin/products",                to: "products#show",          as: :products
   get "/admin/products/new",            to: "products#new"
   post "/admin/products",               to: "products#create"
   delete "/:id",                        to: "products#delete"
-  get "/admin/products/edit/:id",       to: "products#edit",         as: :product_options
+  get "/admin/products/edit/:id",       to: "products#edit",          as: :product_options
   patch "/admin/products/edit/:id",     to: "products#update"
   get "/products/:id",                  to: "products#show_customer"
+
   post "/admin/product_options/:id",    to: "product_options#create"
   delete "/admin/product_options/:id",  to: "product_options#delete"
 

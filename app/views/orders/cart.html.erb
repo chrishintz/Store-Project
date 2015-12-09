@@ -1,0 +1,13 @@
+<h1>Hello World</h1>
+
+<div>
+  <% if @current_order.items.each do |i| %>
+    <ul>
+      <li><%= link_to image_tag(i.product_option.product.image_url), show_product_option.product.id %></li>
+      <li><%= link_to i.product_option.product.name, show_product_path(i.product_option.product.id)%></li>
+      <li><%= number_to_currency((i.price_in_cents)/100.0) %></li>
+      <li>Quantity:<%= i.quantity %></li>
+    </ul>
+  <% end %>
+<% end %>
+</div>
