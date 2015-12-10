@@ -1,13 +1,28 @@
-<h1>Hello World</h1>
+<% if @current_user %>
+  <h1><%= @current_user.email %>'s Cart:</h1>
+<% end %>
 
 <div>
-  <% if @current_order.items.each do |i| %>
-    <ul>
-      <li><%= link_to image_tag(i.product_option.product.image_url), show_product_option.product.id %></li>
-      <li><%= link_to i.product_option.product.name, show_product_path(i.product_option.product.id)%></li>
-      <li><%= number_to_currency((i.price_in_cents)/100.0) %></li>
-      <li>Quantity:<%= i.quantity %></li>
-    </ul>
+  <% if @current_order.items.count == 0 %>
+    <div>
+      <span>You're putting the cart before the horse... Let's go add something to your cart first!</span>
+    </div>
+    <div>
+      <span> <%=  image_tag"https://s3-us-west-2.amazonaws.com/hintz-online-store/cart-before-horse.jpg"%></span>
+    </div>
+  <% else %>
+    <% @current_order.items.each do |i| %>
+      <ul>
+        <li><%= link_to image_tag(i.product_option.product.image_url), show_product_option.product.id %></li>
+        <li><%= link_to i.product_option.product.name, show_product_path(i.product_option.product.id)%></li>
+        <li><%= number_to_currency((i.price_in_cents)/100.0) %></li>
+        <li>Quantity:<%= i.quantity %></li>
+      </ul>
     <% end %>
   <% end %>
+</div>
+
+<div>
+  <button> <%= link_to "More Shopping", home_path %> </button>
+  <button> <%= link_to "Checkout", checkout_path %> </button>
 </div>
