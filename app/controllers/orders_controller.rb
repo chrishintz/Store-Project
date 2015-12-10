@@ -1,15 +1,15 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
+    @orders                           = Order.all
   end
 
   def cart
-    @orders      = Item.where(order_id: session[:user_id])
+    @orders                           = Item.where(order_id: session[:user_id])
   end
 
   def checkout
-    @current_order.total = @current_oder.calculate_total
+    @current_order.total              = @current_oder.calculate_total
   end
 
   def finish_checkout

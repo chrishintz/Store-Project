@@ -3,39 +3,58 @@
 <head>
   <title>Dori-Mart</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-<div class="navbar navbar-static-top">
-  <div class="row">
-    <div class="img-circle col-lg-1">
-      <a href="/"> <%= image_tag"logo_pic.jpg"%></a>
-    </div>
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".menu-wrapper">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-left">
+          <a href="/" class="height=100%"> <%= image_tag"logo_pic.jpg"%></a>
+        </div>
+      </div>
 
-    <h1 class="col-lg-4">Dorienn's Store</h1>
-
-    <div class="col-lg-7">
-      <% if @current_user %>
-        <small class="text-success">Hello, <%= @current_user.email %></small>
-        <%= link_to "Sign Out", "/sign-out", class: "btn btn-danger btn-xs" %>
-        <%= link_to "My Account", "/my-account" %>
-        <% else %>
-          <%= form_tag "/sign-in", class:"pull-right" do %>
-             Email Address
-             <%= text_field_tag :email %>
-             Password
-             <%= password_field_tag :password %>
-             <%= submit_tag "Sign in" %>
-             <%= link_to "Not yet a member? Join Here!", sign_up_path %>
+      <div class="menu-wrapper collapse navbar-collapse">
+        <div class="navbar-menu navbar-right">
+          <ul class="nav navbar-nav">
+          <% if @current_user %>
+            <li><%= link_to "Hello, #{@current_user.email}", "/my-account" %></li>
+            <li><%= link_to "Sign Out", "/sign-out" %></li>
+            <li><%= link_to "My Account", "/my-account" %></li>
+            <li><%= link_to "Cart (0)", cart_path %></li>
+            <% else %>
           <% end %>
-      <% end %>
-      <%= link_to "Cart (0)", cart_path %>
+        </div>
+
+        <% if !@current_user %>
+          <div class="navbar-right">
+            <%= form_tag "/sign-in" do %>
+              <div class="form-group">
+                <div>
+                  Email address
+                  <%= text_field_tag :email %>
+                </div>
+                <div>
+                  Password
+                  <%= password_field_tag :password, class:"form-control" %>
+                </div>
+                  <%= submit_tag "Sign in" %>
+                  <%= link_to "Join Here!", sign_up_path %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
-</div>
+  </nav>
 
   <% if flash.key?(:notice) %>
     <div class='alert alert-info'>
