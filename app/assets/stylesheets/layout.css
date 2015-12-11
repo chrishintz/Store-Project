@@ -25,3 +25,7 @@ input {
 .headline {
   margin-left: 10px;
 }
+
+.center {
+  display: block;
+}

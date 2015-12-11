@@ -1,13 +1,12 @@
 
 <header class="jumbotron hero-spacer text-center">
   <h1>Dori-Mart's Products</h1>
-  <p><%= link_to "Products", "/admin/products", class: "btn btn-danger btn-md" %></p>
 </header>
 
 
 
 <% @products.each do |p| %>
-  <div class="col-md-3 sol-sm-6">
+  <div class="col-md-4">
     <div class="thumbnail">
       <a href="/products/<%= p.id %>"><%= image_tag"#{p.image_url}" %></a>
       <div class="caption">

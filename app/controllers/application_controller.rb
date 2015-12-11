@@ -22,4 +22,13 @@ class ApplicationController < ActionController::Base
       session[:order_id]      = @current_order.id
     end
   end
+
+  def signed_in_as_admin?
+    @current_user && @current_user.is_admin?
+  end
+
+  def authorize_admin
+    redirect_to home_path, notice: "Unauthorized Action" if !signed_in_as_admin?
+  end
+
 end

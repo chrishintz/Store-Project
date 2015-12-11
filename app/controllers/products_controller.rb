@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authorize_admin, except: [:index, :show_customer]
 
   def index
     @users    = User.all

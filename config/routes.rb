@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get "/",                              to: "products#index",         as: :home
   get "/admin/products",                to: "products#show",          as: :products
-  get "/admin/products/new",            to: "products#new"
+  get "/admin/products/new",            to: "products#new",           as: :new_product
   post "/admin/products",               to: "products#create"
   delete "/:id",                        to: "products#delete"
   get "/admin/products/edit/:id",       to: "products#edit",          as: :product_options
