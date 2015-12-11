@@ -31,7 +31,7 @@
             <li><%= link_to "My Account", "/my-account" %></li>
             <li><%= link_to "Cart (0)", cart_path %></li>
             <% if @current_user.is_admin? %>
-              <li> <%= link_to "Add Product", new_product_path %> </li>
+              <li> <%= link_to "Products Page", products_path %> </li>
             <% else %>
           <% end %>
           <% end %>
@@ -49,8 +49,8 @@
                   Password
                   <%= password_field_tag :password, class:"form-control" %>
                 </div>
-                  <%= submit_tag "Sign in" %>
-                  <%= link_to "Join Here!", sign_up_path %>
+                  <%= link_to "Join Here!", sign_up_path, class:"btn btn-danger btn-xs"%>
+                  <%= submit_tag "Sign in", class:"btn btn-default btn-xs" %>
               </div>
             <% end %>
           </div>

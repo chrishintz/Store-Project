@@ -8,14 +8,24 @@ class OrdersController < ApplicationController
     @orders                           = Item.where(order_id: session[:user_id])
   end
 
-  def checkout
-    @current_order.total              = @current_oder.calculate_total
+  def finish_checkout
+    @order  = Order.new(order_params)
+    if @order.save
+      raise
+      redirect_to order_confirm_path
+    else
+      render :index
+    end
   end
 
-  def finish_checkout
-    @current_order.name               = params[:order][:name]
-    @current_order.shipping_address   = params[:order][:shipping_address]
-    @current_order.save
-    redirect_to order_confirm_path
+  def confirm
+    @order = Order.find(params[:id])
   end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:user_id, :name, :shipping_address, :status, :total)
+  end
+
 end

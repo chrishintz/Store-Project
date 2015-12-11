@@ -1,0 +1,19 @@
+<% if @current_user %>
+  <h1><%= @current_user.email %>'s Final Checkout:</h1>
+<% end %>
+
+<div class="col-lg-6 col-lg-offset-3">
+  <h2>Shipping Information</h2>
+  <form action="/order" method="POST" class="well">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <div>
+    <h4>Shipping Address</h4>
+    <input type='text' name="order[shipping_address]" class="form-control"/>
+  </div>
+  <div>
+    <h4>Name</h4>
+    <input type="text" name="order[name]" class="form-control">
+  </div>
+    <input type='submit' />
+  </form>
+</div>

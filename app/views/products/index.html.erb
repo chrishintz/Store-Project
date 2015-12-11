@@ -8,11 +8,11 @@
 <% @products.each do |p| %>
   <div class="col-md-4">
     <div class="thumbnail">
-      <a href="/products/<%= p.id %>"><%= image_tag"#{p.image_url}" %></a>
+      <a href="/products/<%= p.id %>" class="product"><%= image_tag"#{p.image_url}" %></a>
       <div class="caption">
-        <a href="/products/<%= p.id %>"><h3><%= p.name %></h3></a>
+        <a href="/products/<%= p.id %>"><h3 class="product-name"><%= p.name %></h3></a>
         <p><%= p.description %></p>
-        <p><a href="#" class="btn btn-primary">Buy Now!</a></p>
+        <p><a href="/products/<%= p.id %>" class="btn btn-primary btn-block">Buy Now!</a></p>
       </div>
     </div>
   </div>
