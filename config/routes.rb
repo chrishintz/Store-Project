@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get "/cart",                          to: "orders#cart",            as: :cart
   get "/checkout",                      to: "orders#checkout",        as: :checkout
-  post "/order",                        to: "orders#finish_checkout", as: :finish_checkout
+  # post "/order",                        to: "orders#finish_checkout", as: :finish_checkout
   get "/order/confirmation",            to: "orders#confirm",         as: :order_confirm
 
   get "/",                              to: "products#index",         as: :home
@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   post "/admin/product_options/:id",    to: "product_options#create"
   delete "/admin/product_options/:id",  to: "product_options#delete"
+
+  post "/buy/:id",                      to: "items#add_to_cart",        as: :add_to_cart
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

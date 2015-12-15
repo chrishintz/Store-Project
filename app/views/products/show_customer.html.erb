@@ -3,8 +3,11 @@
       <%= image_tag "#{@product.image_url}" %>
         <h3 class="product-name"><%= @product.name %></h3>
         <p><%= @product.description %></p>
-        <p>
-          <a href="#" class="btn btn-primary center">Buy Now!</a>
-        </p>
+        <div>
+          <form action="#" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+            <input type="submit" value="Buy Now!" class="btn btn-primary center" />
+          </form>
+        </div>
     </div>
   </div>
