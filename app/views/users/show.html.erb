@@ -4,5 +4,6 @@
 </div>
 <div>
   <h4>Password</h4>
+  <!-- Putting the password digest in the value isn't needed since it's going to be a long string of gibberish -->
   <input type="password" value="<%= @current_user.password_digest %>" class="form-control">
 </div>

@@ -1,5 +1,6 @@
   <div class="col-md-6 col-md-offset-3">
     <div class="thumbnail">
+      <!-- Since `image_tag` is already in <%= %> it doesn't need to be interpolated into a string again -->
       <%= image_tag "#{@product.image_url}" %>
         <h3 class="product-name"><%= @product.name %></h3>
         <p><%= @product.description %></p>

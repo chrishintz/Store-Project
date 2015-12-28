@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
     @item.order_id            = params[:order_id]
     @item.quantity            = 1
     @item.save
+    # REVIEW: Super nit-picky, this is indented an extra level
       redirect_to cart_path
   end
 
