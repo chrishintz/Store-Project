@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
+    # REVIEW: I like aligning this, but these two lines are pushed too far out.
     @orders                           = Order.all
   end
 

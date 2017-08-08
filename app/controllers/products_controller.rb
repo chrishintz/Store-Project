@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    # REVIEW: Again, here the spacing is too large
     @products           = Product.all
   end
 
@@ -15,6 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    # REVIEW: An extra level of indentation here.
       @product = Product.new(params.require(:product).permit(:name, :description, :image_url))
     if @product.save
       redirect_to products_path
@@ -50,6 +52,7 @@ class ProductsController < ApplicationController
 
   private
 
+  # REVIEW: a better name for this method is probably `product_params`
   def log_params
     params.require(:product).permit(:name, :description, :image_url)
   end
